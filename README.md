@@ -1,5 +1,6 @@
 # cat-collector-flask-api
 
+![banner](https://i.imgur.com/juxPY8i.png)
 
 ## Getting Started
 
@@ -56,7 +57,7 @@ Run the following command to start your application.
 python3 app.py
 ```
 
-# Checking Our Database
+## Checking Our Database
 
 We can verify that our initial migrations have gone through by jumping into the `psql` interactive shell. Run the following commands in your terminal, and you should see that tables for `users`, `profiles`, `cats`, and `toys` exist.
 
@@ -64,3 +65,6 @@ We can verify that our initial migrations have gone through by jumping into the 
 psql cat_collector_api
 \dt
 ```
+
+## React Client App
+[Cat Collector React](https://github.com/whlong1/cat-collector-react)
