@@ -1,44 +1,20 @@
-# flask-react-jwt-auth
+# cat-collector-flask-api
 
-# Setup
 
-Clone the template with the command below. Be sure to replace `<name-of-your-app-here>` in the commands below with the name of your app!
+## Getting Started
 
-```bash
-git clone https://github.com/SEI-Remote/flask-react-auth-template <name-of-your-app-here>
-cd <name-of-your-app-here>
-```
+Fork and clone this repository.
 
-Once you are in the project directory:
+Create a new virtual environment. The dependencies involved in this configuration of Flask are a bit different, so we’ll want a fresh start with this environment. 
 
 ```bash
-rm -rf .git
-```
-
-Re-initialize a git repository:
-
-```bash
-git init
-```
-
-Use the GitHub CLI to create a new project repository on GitHub:
-
-```bash
-gh repo create <name-of-your-app-here>
-```
-
-# Getting Started
-
-Next we’ll need to create a new virtual environment. The dependencies involved in this configuration of Flask are a bit different, so we’ll want a fresh start with this environment. 
-
-```bash
-conda create -n flask_react
+conda create -n cat_collector python=3.9
 ```
 
 Next, activate your virtual environment with the command below. 
 
 ```bash
-conda activate flask_react
+conda activate cat_collector
 ```
 
 Once the environment is active, run the following command in your terminal.
@@ -59,16 +35,16 @@ Add an **`APP_SECRET`** variable to your **`.env`** file.
 APP_SECRET=supersecretkey
 ```
 
-In the base directory of your project, you should see a file called `**config.py**`. Update the line below with the name of **your project’s database**.
+In the base directory of your project, you should see a file called `**config.py**`. Update the line below with the name of our project’s database.
 
 ```python
-SQLALCHEMY_DATABASE_URI = "postgresql://localhost:5432/<db_name_here>"
+SQLALCHEMY_DATABASE_URI = "postgresql://localhost:5432/cat_collector_api"
 ```
 
 After updating `**config.py**`, run the following commands in your terminal. Make sure the name of your database does not already exist. 
 
 ```bash
-createdb <db_name_here>
+createdb cat_collector_api
 flask db init
 flask db migrate
 flask db upgrade
@@ -78,4 +54,13 @@ Run the following command to start your application.
 
 ```bash
 python3 app.py
+```
+
+# Checking Our Database
+
+We can verify that our initial migrations have gone through by jumping into the `psql` interactive shell. Run the following commands in your terminal, and you should see that tables for `users`, `profiles`, `cats`, and `toys` exist.
+
+```bash
+psql cat_collector_api
+\dt
 ```
