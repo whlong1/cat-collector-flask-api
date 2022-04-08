@@ -2,11 +2,36 @@
 
 ![banner](https://i.imgur.com/juxPY8i.png)
 
-## Getting Started
+# Setup
 
-Fork and clone this repository.
+Clone the `flask-react-auth-template` repo with the command below. Be sure to rename it to `cat-collector-api`.
 
-Create a new virtual environment. The dependencies involved in this configuration of Flask are a bit different, so we’ll want a fresh start with this environment. 
+```bash
+git clone https://github.com/SEI-Remote/flask-react-auth-template cat-collector-api
+cd cat-collector-api
+```
+
+Once you are in the project directory:
+
+```bash
+rm -rf .git
+```
+
+Re-initialize a git repository:
+
+```bash
+git init
+```
+
+Use the GitHub CLI to create a new project repository on GitHub:
+
+```bash
+gh repo create cat-collector-api
+```
+
+# Getting Started
+
+Next we’ll need to create a new virtual environment. The dependencies involved in this configuration of Flask are a bit different, so we’ll want a fresh start with this environment. 
 
 ```bash
 conda create -n cat_collector python=3.9
@@ -18,7 +43,7 @@ Next, activate your virtual environment with the command below.
 conda activate cat_collector
 ```
 
-Once the environment is active, run the following command in your terminal.
+**Once the environment is active**, run the following command in your terminal.
 
 ```bash
 pip3 install -r requirements.txt 
@@ -36,19 +61,36 @@ Add an **`APP_SECRET`** variable to your **`.env`** file.
 APP_SECRET=supersecretkey
 ```
 
-In the base directory of your project, you should see a file called `**config.py**`. Update the line below with the name of our project’s database.
+Next up in the **`.env`**, add a **`DATABASE_URL`** with the name of our project’s database.
 
-```python
-SQLALCHEMY_DATABASE_URI = "postgresql://localhost:5432/cat_collector_api"
+```
+DATABASE_URL='postgresql://localhost:5432/cat_collector_api'
 ```
 
-After updating `**config.py**`, run the following commands in your terminal. Make sure the name of your database does not already exist. 
+Make sure your conda environment is active and hop into the `psql` shell. 
+
+```
+psql
+```
+
+Within the `psql` shell, run the following command. Make sure the name of your database does not already exist. 
+
+```
+create database cat_collector_api;
+```
+
+Run the following command to exit the shell. 
+
+```
+\q
+```
+
+Run the following commands in your terminal to update your database.
 
 ```bash
-createdb cat_collector_api
-flask db init
-flask db migrate
-flask db upgrade
+python3 -m flask db init
+python3 -m flask db migrate
+python3 -m flask db upgrade
 ```
 
 Run the following command to start your application. 
@@ -57,9 +99,9 @@ Run the following command to start your application.
 python3 app.py
 ```
 
-## Checking Our Database
+# Checking Our Database
 
-We can verify that our initial migrations have gone through by jumping into the `psql` interactive shell. Run the following commands in your terminal, and you should see that tables for `users`, `profiles`, `cats`, and `toys` exist.
+We can verify that our initial migrations have gone through by jumping into the `psql` interactive shell. Run the following commands in your terminal, and you should see that tables for `users` and `profiles` exist.
 
 ```bash
 psql cat_collector_api
