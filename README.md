@@ -2,36 +2,11 @@
 
 ![banner](https://i.imgur.com/juxPY8i.png)
 
-# Setup
-
-Clone the `flask-react-auth-template` repo with the command below. Be sure to rename it to `cat-collector-api`.
-
-```bash
-git clone https://github.com/SEI-Remote/flask-react-auth-template cat-collector-api
-cd cat-collector-api
-```
-
-Once you are in the project directory:
-
-```bash
-rm -rf .git
-```
-
-Re-initialize a git repository:
-
-```bash
-git init
-```
-
-Use the GitHub CLI to create a new project repository on GitHub:
-
-```bash
-gh repo create cat-collector-api
-```
-
 # Getting Started
 
-Next we’ll need to create a new virtual environment. The dependencies involved in this configuration of Flask are a bit different, so we’ll want a fresh start with this environment. 
+Fork and clone this repo.
+
+Once you are in the project directory, create a new virtual environment.
 
 ```bash
 conda create -n cat_collector python=3.9
